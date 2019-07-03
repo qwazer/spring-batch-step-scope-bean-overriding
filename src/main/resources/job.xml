@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/batch"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <job-repository/>
+
+    <job id="job">
+        <step id="step">
+            <tasklet>
+                <chunk reader="dummyReader"
+                       writer="dummyWriter"
+                       commit-interval="1">
+                </chunk>
+            </tasklet>
+        </step>
+    </job>
+
+    <beans:bean id="dummyReader"
+                class="com.github.qwazer.sbssbo.DummyReader"
+                scope="step"/>
+
+</beans:beans>
